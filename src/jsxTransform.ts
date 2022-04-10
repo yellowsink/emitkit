@@ -5,7 +5,7 @@ const defaultParserConfig: ParserConfig = {
   jsx: true
 }
 
-export const jsxTrasnform = async (code: string, opts?: Options) => {
+export const jsxTransform = async (code: string, opts?: Options) => {
   const ast = await parse(code, opts?.jsc?.parser ?? defaultParserConfig);
   const transformed = opts?.plugin?.(ast) ?? ast;
   return await print(transformed, opts);

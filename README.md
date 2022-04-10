@@ -18,7 +18,7 @@ Passed through `transform`:
 Passed through `jsxTransform`:
 `<div>foo</div>` becomes `<div >foo</div>;`
 
-## `emitters`
+## Emitters
 
 Writing out object literals to create new code is painful.
 
