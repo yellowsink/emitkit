@@ -14,5 +14,8 @@
   },
   "peerDependencies": {
     "@swc/core": "^1.2.165"
+  },
+  "scripts": {
+    "prepublish": "tsc"
   }
 }
