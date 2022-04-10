@@ -1,0 +1,11 @@
+{
+    "include": ["src/**/*.ts", "src/AuxVisitor.ts"],
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ES6",
+        "moduleResolution": "Node",
+        "strict": true,
+        "declaration": true,
+        "outDir": "dist"
+    }
+}
