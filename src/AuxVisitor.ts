@@ -1,39 +1,10 @@
-// Like Visitor.ts, but with a load of aux functions that you can call instead
-// without breaking the internal routing of the visitor.
-
-// excuse this hackiness, but i don't feel like writing repetitive code almost 200 times
-for (const func of Reflect.ownKeys(Visitor.prototype)) {
-  if (
-    typeof func === "symbol" ||
-    !func.startsWith("visit") ||
-    // @ts-expect-error
-    typeof Visitor.prototype[func] !== "function"
-  )
-    continue;
-
-  const newName = "auxV" + func.slice(1);
-
-  // @ts-expect-error
-  AuxVisitor.prototype[newName] = (n) => [n, true];
-
-  // @ts-expect-error
-  const origFunc = AuxVisitor.prototype[func];
-
-  // @ts-expect-error
-  AuxVisitor.prototype[func] = function (n) {
-    // @ts-expect-error
-    const maybeProcessed = this[newName](n);
-
-    // @ts-expect-error
-    if (!maybeProcessed) return Visitor.prototype[func].call(this, n);
-
-    const [processed, keepRecursing] = maybeProcessed;
-
-    return keepRecursing ? origFunc.call(this, processed) : processed;
-  };
-}
-
-// madness lies below this line
+/*\
+|*| Like Visitor.ts, but with a load of aux functions that you can call instead
+|*| without breaking the internal routing of the visitor.
+|*| 
+|*| i suggest you read this file from the bottom up
+|*| if your code editor supports it, collapse the import and class.
+\*/
 
 import {
   Program,
@@ -1085,4 +1056,38 @@ export default class AuxVisitor extends Visitor {
   ): [Pattern | undefined, boolean] | undefined {
     return;
   }
+}
+
+// madness lies above this line
+
+// excuse this hackiness, but i don't feel like writing repetitive code almost 200 times
+for (const func of Reflect.ownKeys(Visitor.prototype)) {
+  if (
+    typeof func === "symbol" ||
+    !func.startsWith("visit") ||
+    // @ts-expect-error
+    typeof Visitor.prototype[func] !== "function"
+  )
+    continue;
+
+  const newName = "auxV" + func.slice(1);
+
+  // @ts-expect-error
+  AuxVisitor.prototype[newName] = (n) => [n, true];
+
+  // @ts-expect-error
+  const origFunc = AuxVisitor.prototype[func];
+
+  // @ts-expect-error
+  AuxVisitor.prototype[func] = function (n) {
+    // @ts-expect-error
+    const maybeProcessed = this[newName](n);
+
+    // @ts-expect-error
+    if (!maybeProcessed) return Visitor.prototype[func].call(this, n);
+
+    const [processed, keepRecursing] = maybeProcessed;
+
+    return keepRecursing ? origFunc.call(this, processed) : processed;
+  };
 }
