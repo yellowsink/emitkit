@@ -1,7 +1,9 @@
-import AuxVisitor from "./AuxVisitor";
-import jsxTransform from "./jsxTransform";
+import AuxVisitor from "./AuxVisitor.js";
+import jsxTransform from "./jsxTransform.js";
 export { AuxVisitor, jsxTransform };
-export * from "./emitters";
-export * as emitters from "./emitters";
-export * from "./stringInterop";
-export * as interop from "./stringInterop";
+
+export * from "./emitters.js";
+export * as emitters from "./emitters.js";
+
+export * from "./stringInterop.js";
+export * as interop from "./stringInterop.js";

@@ -6,8 +6,8 @@ import type {
   Program,
   Statement,
 } from "@swc/core";
-import { defaultParserConfig } from "./jsxTransform";
-import { emitBlockStatement } from "./emitters";
+import { defaultParserConfig } from "./jsxTransform.js";
+import { emitBlockStatement } from "./emitters.js";
 
 const expressionTypes = [
   "ThisExpression",
