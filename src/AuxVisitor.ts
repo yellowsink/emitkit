@@ -6,7 +6,7 @@
 |*| if your code editor supports it, collapse the import and class.
 \*/
 
-import {
+import type {
   Program,
   Module,
   Script,

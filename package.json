@@ -1,6 +1,6 @@
 {
   "name": "emitkit",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Make your SWC transforms much nicer to write",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -17,5 +17,8 @@
   },
   "scripts": {
     "prepublish": "tsc"
+  },
+  "dependencies": {
+    "@swc/wasm-web": "^1.2.165"
   }
 }
