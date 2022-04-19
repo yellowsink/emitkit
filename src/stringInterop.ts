@@ -59,10 +59,7 @@ export const stringify = (
     jsc: defaultParserConfig,
   } as Options);
 
-export const astIfy = (code: string): ModuleItem | ModuleItem[] => {
-  const ast: Program = parseSync(code, {
+export const astIfy = (code: string): ModuleItem[] =>
+  parseSync(code, {
     jsc: defaultParserConfig,
-  } as Options);
-  if (ast.body.length === 1) return ast.body[0];
-  return ast.body;
-};
+  } as Options).body;
