@@ -64,11 +64,3 @@ essentially acting as if you overrode the main `visit` function.
 This is useful to prevent infinite loops in some cases,
 but usually should be left true as the whole point of AuxVisitor is leaving
 internal routing intact.
-
-## String interop
-
-Sometimes building an AST is just *time-consuming*, and you want a better way.
-
-EmitKit exports the `astIfy` function that lets you just write JS instead.
-
-There's also `stringify` if you want to get the string of an ast easily.
