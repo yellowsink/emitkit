@@ -211,7 +211,7 @@ export const emitOptionalChain = (
   type: "OptionalChainingExpression",
   // @ts-expect-error - why isnt this in the type defs?
   questionDotToken: blankSpan,
-  expr: emitMemberExpression(object, property),
+  base: emitMemberExpression(object, property),
 });
 
 export const emitUpdateExpression = (
